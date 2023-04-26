@@ -9,7 +9,7 @@ class App extends Component {
           <h2>SkyDoc</h2>
         </div>
       </div>
-    );
+    )
   }
 }
 
