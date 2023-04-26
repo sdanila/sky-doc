@@ -2,6 +2,7 @@ import { AnyAction, applyMiddleware, combineReducers, compose, createStore, Redu
 import thunk from 'redux-thunk'
 
 import { IExtra } from 'shared/types/redux'
+import * as CloudFiles from 'features/cloudFiles'
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -11,7 +12,7 @@ declare global {
 }
 
 export interface IApplicationState {
-  cloudFiles: any
+  cloudFiles: CloudFiles.types.IFilesState
 }
 
 type ConfigureStore = {
@@ -27,14 +28,14 @@ export function configureStore(extra: IExtra): ConfigureStore {
       : (arg: any) => arg
 
   const reducer: Reducer<IApplicationState, AnyAction> = combineReducers({
-    cloudFiles: () => {}
+    cloudFiles: CloudFiles.reducer
   })
 
   const store = createStore(
     reducer,
     compose(
       applyMiddleware(middleware),
-    //   composeEnhancers
+      // composeEnhancers
     )
   )
 

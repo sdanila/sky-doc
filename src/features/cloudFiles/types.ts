@@ -1,4 +1,3 @@
-import { EmptyObject } from 'redux'
 import { ICommunication } from 'shared/models/Communications/Communications'
 
 export interface IFilesState {
@@ -11,5 +10,3 @@ export interface IFilesState {
     files: any[]
   }
 }
-
-export type ICardStatePersisted = IFilesState & EmptyObject
