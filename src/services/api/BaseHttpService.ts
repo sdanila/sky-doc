@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, ResponseType } from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import { QueryTypes } from './data'
 
 export interface IHttpMethodRequestSettings<SR, D> {
@@ -18,6 +18,7 @@ export class BaseHttpService {
 
     constructor(public baseUrl: string) {
         axios.defaults.timeout = 30000
+        axios.defaults.responseType = 'json'
         axios.defaults.validateStatus = status => (status >= 200 && status < 300)
 
         this.baseUrl = baseUrl
